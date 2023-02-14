@@ -1,6 +1,7 @@
 {
   /**
    * Print Loading State
+   * discriminated(공통적인 프로퍼티) 활용!
    */
   type LoadingState = {
     state: 'loading';

@@ -11,7 +11,9 @@
     result: 'fail';
     reason: string;
   }
+  
   type LoginState = SuccessState | FailState;
+
   function login(): LoginState{
     return {
       result: 'success',
