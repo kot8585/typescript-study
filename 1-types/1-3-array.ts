@@ -3,6 +3,7 @@
   const fruits: string[] = ['apple', 'banana'];
   const scores: Array<number> = [1, 3, 4];
 
+  //❗️readonly : 메서드 안에서 값을 변경하지 못하도록 할때 사용
   // function printArray(fruits: readonly Array<number>) {}
   function printArray(fruits: readonly string[]) {}
 
