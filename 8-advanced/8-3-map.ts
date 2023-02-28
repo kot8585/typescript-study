@@ -38,7 +38,6 @@
 
   //예제 3 : Mapped Type 활용해보기
   //TODO: 1. https://dev.to/mattzgg_94/typescript-use-mapped-type-to-implement-a-proxy-4im2 읽어보기
-  //TODO: 2. 사용해보기
   type Proxy<T> = {
     get(): T;
     set(value: T): void;
@@ -48,4 +47,23 @@
     [P in keyof T]: Proxy<T[P]>
   }
 
+  //TODO: 다시 한번 보기. 이해가 안가.
+  function proxify<T extends object>(o: T): Proxify<T> {
+    const result = {} as Proxify<T>;
+    for(let key in o) {
+      let rawValue = o[key];
+      result[key] = {
+        get: () => rawValue,
+        set: (value) => {
+          rawValue = value; //변수에 넣었는데 이게 어떻게 가능한거지,,?
+        },
+      };
+    }
+    return result;
+  }
+
+  let props = {rooms: 4};
+  let proxifiedProps = proxify(props);
+  proxifiedProps.rooms.set(5);
+  console.log(proxifiedProps.rooms.get());
 }
